@@ -3,18 +3,51 @@
     <ion-buttons slot="start">
       <ion-menu-button></ion-menu-button>
     </ion-buttons>
-    <ion-title>Forecast</ion-title>
+    <ion-title>Forecast aa</ion-title>
   </ion-toolbar>
+
 </ion-header>
 
 <ion-content [fullscreen]="true">
+
+  <ion-breadcrumbs>
+    <ion-breadcrumb href="/">
+      <ion-icon slot="start" name="home"></ion-icon>
+      Home
+    </ion-breadcrumb>
+    <ion-breadcrumb href="/forecast">
+      <ion-icon slot="start" name="sunny"></ion-icon>
+      Forecast
+    </ion-breadcrumb>
+  </ion-breadcrumbs>
+
   <ion-header collapse="condense" *ngIf="data">
     <ion-toolbar>
-      <ion-title size="large">{{ data.location?.country }}/{{ data.location?.name }}</ion-title>
+      <ion-title size="large">{{ data.location?.country }} / {{ data.location.name }}</ion-title>
     </ion-toolbar>
   </ion-header>
 
-  <div id="container" *ngIf="data" style="margin: 5px;">
-    Weather: {{ data.current?.temp_c }} ℃
-  </div>
+  <ion-grid>
+    <ion-row *ngIf="data">
+      <ion-col class="centerix">
+        Last updated: {{ data.current?.last_updated }}
+        <br/>
+        <h1>{{ data.current?.temp_c }} ℃</h1>
+        Feels like {{ data.current?.feelslike_c }} ℃
+        <br/>
+        <img [src]="data.current?.condition?.icon">
+        <br/>
+        {{ data.current?.condition?.text }}
+        <br/><br/>
+        <b>Wind</b> {{ data.current.wind_kph }} kph {{ data.current.wind_dir }}
+        <br/>
+        <b>Pressure</b> {{ data.current.pressure_mb }}
+        <br/>
+        <b>Visibility</b> {{ data.current.vis_km }} km
+        <br/>
+        <b>Humidity</b> {{ data.current.humidity }}%
+      </ion-col>
+    </ion-row>
+</ion-grid>
+
 </ion-content>

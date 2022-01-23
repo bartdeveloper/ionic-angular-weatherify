@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Weather } from 'src/app/models/Weather';
 import { APIService } from 'src/app/services/api.service';
 
 @Component({
@@ -8,12 +9,12 @@ import { APIService } from 'src/app/services/api.service';
 })
 export class ForecastPage implements OnInit {
 
-  data = null;
+  data: Weather = null;
 
   constructor(private api: APIService) { }
 
   ngOnInit() {
-    this.api.getWeather('Gdansk').subscribe((data)=>this.data = data);
+    this.api.getWeather('Gdansk').subscribe((data) => this.data = data);
   }
 
 }
