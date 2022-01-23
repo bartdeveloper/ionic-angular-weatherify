@@ -1,0 +1,6 @@
+{
+	"appId": "pl.appselio.weatherify",
+	"appName": "Weatherify",
+	"webDir": "www",
+	"bundledWebRuntime": false
+}
