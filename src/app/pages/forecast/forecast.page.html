@@ -8,13 +8,13 @@
 </ion-header>
 
 <ion-content [fullscreen]="true">
-  <ion-header collapse="condense">
+  <ion-header collapse="condense" *ngIf="data">
     <ion-toolbar>
-      <ion-title size="large">test</ion-title>
+      <ion-title size="large">{{ data.location?.country }}/{{ data.location?.name }}</ion-title>
     </ion-toolbar>
   </ion-header>
 
-  <div id="container">
-    <strong class="capitalize">aaaa</strong>
+  <div id="container" *ngIf="data" style="margin: 5px;">
+    Weather: {{ data.current?.temp_c }} ℃
   </div>
 </ion-content>
