@@ -6,7 +6,8 @@ import { keys } from './keys.env';
 export const environment = {
   production: false,
   API_URL: 'https://api.weatherapi.com/v1/',
-  API_KEY: keys.API_KEY
+  API_KEY: keys.API_KEY,
+  DEFAULT_CITY: 'Gdansk'
 };
 
 /*

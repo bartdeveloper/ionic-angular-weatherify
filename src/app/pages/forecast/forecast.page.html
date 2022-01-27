@@ -3,8 +3,8 @@
     <ion-buttons slot="start">
       <ion-menu-button></ion-menu-button>
     </ion-buttons>
-    <ion-title *ngIf="data">{{ data.location.country }} / {{ data.location.name }}</ion-title>
-    <ion-title *ngIf="!data">Forecast</ion-title>
+    <ion-title *ngIf="data">{{ data.location.name }}</ion-title>
+    <ion-title *ngIf="!data">Forecast weather</ion-title>
   </ion-toolbar>
 
 </ion-header>
@@ -18,7 +18,7 @@
     </ion-breadcrumb>
     <ion-breadcrumb href="/forecast">
       <ion-icon slot="start" name="stats-chart"></ion-icon>
-      Forecast
+      Forecast weather
     </ion-breadcrumb>
   </ion-breadcrumbs>
 
@@ -33,6 +33,17 @@
       <ion-text color="danger"><h4>{{ error }}</h4></ion-text>
     </ion-item>
   </ion-list>
+
+  <form [formGroup]="weatherForm" (ngSubmit)="onSubmit()">
+    <ion-item>
+      <ion-label  for="cityName" position="floating">City name</ion-label>
+      <ion-input type="text" id="cityName" name="cityName" formControlName="cityName" clearInput="true"></ion-input>
+    </ion-item>
+    <ion-button type="submit" expand="block" fill="outline">
+      <ion-icon slot="icon-only" slot="end" name="search"></ion-icon>
+      Search
+      <ion-ripple-effect></ion-ripple-effect></ion-button>
+  </form>
 
   <div *ngIf="data" style="margin-top: 20px;">
 
@@ -92,7 +103,7 @@
                 <ion-item>
                 <div style="width: 100vw; float: left; padding-left: 20px; padding-top: 10px; padding-bottom: 10px;">
                   <div style="width: 80px; float: left;">
-                    {{ hour.time | date:'shortTime' }} <img style="width: 50px;" [src]="hour.condition.icon | safer: 'url'">
+                    {{ hour.time | date:'shortTime':'+0200' }} <img style="width: 50px;" [src]="hour.condition.icon | safer: 'url'">
                   </div>
                   <div style="width: 50%; float: left; padding-top: 30px; font-size: 1.5rem">
                     {{ hour.temp_c }} ℃

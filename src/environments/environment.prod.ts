@@ -1,5 +1,6 @@
 export const environment = {
   production: true,
   API_URL: '',
-  API_KEY: ''
+  API_KEY: '',
+  DEFAULT_CITY: 'Gdansk'
 };
