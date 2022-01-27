@@ -12,13 +12,13 @@ const routes: Routes = [
     loadChildren: () => import('./pages/folder/folder.module').then( m => m.FolderPageModule)
   },
   {
-    path: 'forecast',
-    loadChildren: () => import('./pages/forecast/forecast.module').then( m => m.ForecastPageModule)
-  },  {
     path: 'current',
     loadChildren: () => import('./pages/current/current.module').then( m => m.CurrentPageModule)
+  },
+  {
+    path: 'forecast',
+    loadChildren: () => import('./pages/forecast/forecast.module').then( m => m.ForecastPageModule)
   }
-
 
 ];
 

@@ -20,8 +20,13 @@ export class APIService {
     return this.http.post<any>(`${environment.API_URL}${endpoint}`, body).pipe(timeout(15000), retry(2));
   }
 
-  getWeather(query: string){
-    return this.getGeneric(`current.json?key=${environment.API_KEY}&q=${query}&aqi=no`);
+  /* GET */
+  getCurrentWeather(query: string){
+    return this.getGeneric(`current.json?key=${environment.API_KEY}&q=${query}&aqi=yes`);
   }
-}
 
+  getForecastWeather(query: string){
+    return this.getGeneric(`forecast.json?key=${environment.API_KEY}&q=${query}&days=7&aqi=yes&alerts=yes`);
+  }
+
+}
