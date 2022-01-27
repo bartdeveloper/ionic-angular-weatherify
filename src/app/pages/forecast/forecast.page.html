@@ -17,7 +17,7 @@
       Home
     </ion-breadcrumb>
     <ion-breadcrumb href="/forecast">
-      <ion-icon slot="start" name="sunny"></ion-icon>
+      <ion-icon slot="start" name="stats-chart"></ion-icon>
       Forecast
     </ion-breadcrumb>
   </ion-breadcrumbs>
@@ -34,28 +34,81 @@
     </ion-item>
   </ion-list>
 
-  <ion-grid>
-    <ion-row *ngIf="data">
-      <ion-col class="centerix">
-        Last updated: {{ data.current.last_updated }}
-        <br/>
-        <h1>{{ data.current.temp_c }} ℃</h1>
-        Feels like {{ data.current.feelslike_c }} ℃
-        <br/>
-        <img [src]="data.current.condition.icon | safer: 'url'">
-        <br/>
-        {{ data.current.condition.text }}
-        <br/><br/>
-        <b>Wind</b> {{ data.current.wind_kph }} km/h {{ data.current.wind_dir }}
-        <br/>
-        <b>Pressure</b> {{ data.current.pressure_mb }} hPa
-        <br/>
-        <b>Visibility</b> {{ data.current.vis_km }} km
-        <br/>
-        <b>Humidity</b> {{ data.current.humidity }}%
-      </ion-col>
-    </ion-row>
-</ion-grid>
+  <div *ngIf="data" style="margin-top: 20px;">
+
+    <div class="centerix">
+      <b>Last updated:</b> {{ data.current.last_updated }}
+    </div>
+
+    <div *ngFor="let day of data.forecast.forecastday">
+
+      <ion-card>
+
+        <div style="width: 100vw; padding-left: 2px; padding-top: 20px; float: left;">
+          <div style="width: 100%; float: left; padding-left: 5vw; padding-right: 5vw; font-weight: normal;">
+            {{ day.day.condition.text }}
+          </div>
+          <div style="padding-left: 5vw; padding-right: 5vw; width: 100vw; float: left;">
+            <div style="width: 50%; float: left; padding-top: 5px; font-size: 1.5rem;">{{ day.date | date:'mediumDate' }}</div>
+            <div style="width: 40%; float: left; font-size: 2rem; font-weight: bold; text-align: right;">{{ day.day.avgtemp_c }} ℃</div>
+          </div>
+        </div>
+
+        <div style="clear: both;"></div> 
+        
+        <div style="padding-left: 20px; padding-top: 10px; padding-bottom: 20px;">
+          <div style="width: 50%; float: left; padding-bottom: 20px;">
+              <span><b>{{ day.day.mintemp_c }} ℃ ... {{ day.day.maxtemp_c }} ℃</b></span>
+              <br/><br/>
+              <b>Wind</b> {{ day.day.maxwind_kph }} km/h
+              <br/>
+              <b>Sunrise</b> {{ day.astro.sunrise }}
+              <br/>
+              <b>Sunset</b> {{ day.astro.sunset }}
+              <br/>
+              <b>Visibility</b> {{ day.day.avgvis_km }} km
+              <br/>
+              <b>Humidity</b> {{ day.day.avghumidity }}%
+              <br/>
+              <b>Chance of snow</b> {{ day.day.daily_chance_of_snow }}%
+              <br/>
+              <b>Chance of rain</b> {{ day.day.daily_chance_of_rain }}%
+              <br/>
+              <b>Total precip</b> {{ day.day.totalprecip_mm }} mm
+          </div>
+          <div style="width: 50%; float: left; text-align: right; padding-top: 60px; padding-right: 30px;"><img [src]="day.day.condition.icon | safer: 'url'"></div>
+        </div>
+
+        <div style="clear: both; width: 100vw;"></div> 
+
+        <ion-accordion-group>
+          <ion-accordion value="colors">
+            <ion-item slot="header">
+              <ion-label>Hourly forecast</ion-label>
+            </ion-item>
+        
+            <ion-list slot="content">
+              <div *ngFor="let hour of day.hour">
+                <ion-item>
+                <div style="width: 100vw; float: left; padding-left: 20px; padding-top: 10px; padding-bottom: 10px;">
+                  <div style="width: 80px; float: left;">
+                    {{ hour.time | date:'shortTime' }} <img style="width: 50px;" [src]="hour.condition.icon | safer: 'url'">
+                  </div>
+                  <div style="width: 50%; float: left; padding-top: 30px; font-size: 1.5rem">
+                    {{ hour.temp_c }} ℃
+                  </div>
+                </div>
+              </ion-item>
+              </div>
+            </ion-list>
+          </ion-accordion>
+        </ion-accordion-group>
+
+      </ion-card>
+
+    </div>
+
+  </div>
 
 <div *ngIf="!data && !error">
   <ion-list>
