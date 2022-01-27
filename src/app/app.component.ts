@@ -11,7 +11,8 @@ import { Platform } from '@ionic/angular';
 export class AppComponent {
   public appPages = [
     { title: 'Home', url: '/folder/Home', icon: 'home' },
-    { title: 'Forecast', url: '/forecast', icon: 'sunny' },
+    { title: 'Current', url: '/current', icon: 'sunny' },
+    { title: 'Forecast', url: '/forecast', icon: 'stats-chart' },
     { title: 'Contact', url: '/folder/Contact', icon: 'mail' },
   ];
   public labels = ['Test'];

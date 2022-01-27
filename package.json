@@ -10,7 +10,7 @@
     "test": "ng test",
     "lint": "ng lint",
     "e2e": "ng e2e",
-    "ionic": "ng serve --ssl --port=5100 ",
+    "ionic": "ng serve --port=5100 ",
     "ionic-prod": "ionic serve --ssl --port=5104 --open=false --configuration production"
   },
   "private": true,
