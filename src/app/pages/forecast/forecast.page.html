@@ -53,14 +53,14 @@
 
     <div *ngFor="let day of data.forecast.forecastday">
 
-      <ion-card>
+      <ion-card style="background-color: #f3f6f7;">
 
         <div style="width: 100vw; padding-left: 2px; padding-top: 20px; float: left;">
           <div style="width: 100%; float: left; padding-left: 5vw; padding-right: 5vw; font-weight: normal;">
             {{ day.day.condition.text }}
           </div>
           <div style="padding-left: 5vw; padding-right: 5vw; width: 100vw; float: left;">
-            <div style="width: 50%; float: left; padding-top: 5px; font-size: 1.5rem;">{{ day.date | date:'mediumDate' }}</div>
+            <div style="width: 50%; float: left; padding-top: 5px; font-size: 1.5rem;">{{ day.date | customDate }}</div>
             <div style="width: 40%; float: left; font-size: 2rem; font-weight: bold; text-align: right;">{{ day.day.avgtemp_c }} ℃</div>
           </div>
         </div>

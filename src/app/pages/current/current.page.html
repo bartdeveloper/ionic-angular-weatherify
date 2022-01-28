@@ -51,30 +51,39 @@
       <b>Last updated:</b> {{ data.current.last_updated }}
     </div>
 
-    <ion-card>
+    <ion-card style="background-color: #f3f6f7;">
 
-      <ion-card-header>
-        <ion-card-subtitle>Feels like {{ data.current.feelslike_c }} ℃</ion-card-subtitle>
-        <ion-card-title>{{ data.current.temp_c }} ℃</ion-card-title>
-      </ion-card-header>
-
-      <div class="centerix" style="padding-bottom: 20px;">
-        <img [src]="data.current.condition.icon | safer: 'url'">
-        <br/>
-        {{ data.current.condition.text }}
-        <br/><br/>
-        <b>PM 2.5</b> {{ data.current.air_quality.pm2_5.toFixed(2) }}
-        <br/>
-        <b>PM 10</b> {{ data.current.air_quality.pm10.toFixed(2) }}
-        <br/>
-        <b>Wind</b> {{ data.current.wind_kph }} km/h {{ data.current.wind_dir }}
-        <br/>
-        <b>Pressure</b> {{ data.current.pressure_mb }} hPa
-        <br/>
-        <b>Visibility</b> {{ data.current.vis_km }} km
-        <br/>
-        <b>Humidity</b> {{ data.current.humidity }}%
+      <div style="width: 100vw; padding-left: 2px; padding-top: 20px; float: left;">
+        <div style="width: 100%; float: left; padding-left: 5vw; padding-right: 5vw; font-weight: normal;">
+          {{ data.current.condition.text }}
+        </div>
+        <div style="padding-left: 5vw; padding-right: 5vw; width: 100vw; float: left;">
+          <div style="width: 50%; float: left; padding-top: 5px; font-size: 1.5rem;">NOW</div>
+          <div style="width: 40%; float: left; font-size: 2rem; font-weight: bold; text-align: right;">{{ data.current.temp_c }} ℃</div>
+        </div>
       </div>
+
+      <div style="clear: both;"></div> 
+      
+      <div style="padding-left: 20px; padding-top: 10px; padding-bottom: 20px;">
+        <div style="width: 50%; float: left; padding-bottom: 20px;">
+          <b>Feels like</b> {{ data.current.feelslike_c }} ℃
+          <br/>
+          <b>PM 2.5</b> {{ data.current.air_quality.pm2_5.toFixed(2) }}
+          <br/>
+          <b>PM 10</b> {{ data.current.air_quality.pm10.toFixed(2) }}
+          <br/>
+          <b>Wind</b> {{ data.current.wind_kph }} km/h {{ data.current.wind_dir }}
+          <br/>
+          <b>Pressure</b> {{ data.current.pressure_mb }} hPa
+          <br/>
+          <b>Visibility</b> {{ data.current.vis_km }} km
+          <br/>
+          <b>Humidity</b> {{ data.current.humidity }}%
+        </div>
+        <div style="width: 50%; float: left; text-align: right; padding-top: 25px; padding-right: 35px;"><img [src]="data.current.condition.icon | safer: 'url'"></div>
+      </div>
+
     </ion-card>
 
   </div>

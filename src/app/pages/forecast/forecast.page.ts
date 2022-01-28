@@ -13,7 +13,7 @@ export class ForecastPage implements OnInit {
 
   data: ForecastWeather;
   error;
-  weatherForm = this.formBuilder.group({ cityName: [null, [Validators.required, Validators.minLength(3)]] });
+  weatherForm = this.formBuilder.group({ cityName: ['', [Validators.required, Validators.minLength(3)]] });
   
   constructor(private api: APIService, private formBuilder: FormBuilder) { }
 
