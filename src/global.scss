@@ -24,3 +24,91 @@
 @import "~@ionic/angular/css/text-alignment.css";
 @import "~@ionic/angular/css/text-transformation.css";
 @import "~@ionic/angular/css/flex-utils.css";
+
+.centerix {
+    text-align: center;
+}
+
+.width60 {
+    width: 60%;
+}
+
+.data {
+    margin-top: 20px;
+}
+
+.weatherapi {
+    position: absolute; 
+    bottom: 0; 
+    text-align: right; 
+    width: 100%; 
+    padding: 5px;
+}
+
+.weatherapi2 {
+    bottom: 0; text-align: right; width: 100%; padding: 5px;
+}
+
+.weather-card {
+    background-color: var(--weather-card);
+}
+
+.weather-header {
+    width: 100vw; padding-left: 2px; padding-top: 20px; float: left;
+}
+
+.weather-header-condition {
+    width: 100%; float: left; padding-left: 5vw; padding-right: 5vw; font-weight: normal;
+}
+
+.weather-header2 {
+    padding-left: 5vw; padding-right: 5vw; width: 100vw; float: left;
+}
+
+.weather-header2-date {
+    width: 50%; float: left; padding-top: 5px; font-size: 1.5rem;
+}
+
+.weather-header2-degree {
+    width: 40%; float: left; font-size: 2rem; font-weight: bold; text-align: right;
+}
+
+.weather-content {
+    padding-left: 20px; 
+    padding-top: 10px; 
+    padding-bottom: 20px;
+}
+
+.weather-details {
+    width: 60%; 
+    float: left; 
+    padding-bottom: 20px;
+}
+
+.weather-img {
+    width: 40%; 
+    float: left; 
+    text-align: right; 
+    padding-top: 25px; 
+    padding-right: 35px;
+}
+
+.weather-range {
+    margin-bottom: 15px;
+}
+
+.hourly-content {
+    width: 100vw; float: left; padding-left: 20px; padding-top: 10px; padding-bottom: 10px;
+}
+
+.hourly-time {
+    width: 80px; float: left;
+
+    img {
+        width: 50px;
+    }
+}
+
+.hourly-degree {
+    width: 50%; float: left; padding-top: 30px; font-size: 1.5rem
+}

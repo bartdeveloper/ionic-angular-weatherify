@@ -24,6 +24,7 @@ export class ForecastPage implements OnInit {
 
   onSubmit() {
     if (this.weatherForm.valid) {
+      this.data = null;
       this.getData();
     } else {
       this.error = 'Fill city!';

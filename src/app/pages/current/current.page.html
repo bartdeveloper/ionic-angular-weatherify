@@ -36,7 +36,7 @@
 
   <form [formGroup]="weatherForm" (ngSubmit)="onSubmit()">
     <ion-item>
-      <ion-label  for="cityName" position="floating">City name</ion-label>
+      <ion-label for="cityName" position="floating">City name</ion-label>
       <ion-input type="text" id="cityName" name="cityName" formControlName="cityName" clearInput="true"></ion-input>
     </ion-item>
     <ion-button type="submit" expand="block" fill="outline">
@@ -45,7 +45,7 @@
       <ion-ripple-effect></ion-ripple-effect></ion-button>
   </form>
 
-  <div *ngIf="data" style="margin-top: 20px;">
+  <div *ngIf="data" class="data">
 
     <div class="centerix">
       <b>Last updated:</b> {{ data.current.last_updated }}
@@ -53,42 +53,34 @@
 
     <ion-card class="weather-card">
 
-      <div style="width: 100vw; padding-left: 2px; padding-top: 20px; float: left;">
-        <div style="width: 100%; float: left; padding-left: 5vw; padding-right: 5vw; font-weight: normal;">
+      <div class="weather-header">
+        <div class="weather-header-condition">
           {{ data.current.condition.text }}
         </div>
-        <div style="padding-left: 5vw; padding-right: 5vw; width: 100vw; float: left;">
-          <div style="width: 50%; float: left; padding-top: 5px; font-size: 1.5rem;">NOW</div>
-          <div style="width: 40%; float: left; font-size: 2rem; font-weight: bold; text-align: right;">{{ data.current.temp_c }} ℃</div>
+        <div class="weather-header2">
+          <div class="weather-header2-date">NOW</div>
+          <div class="weather-header2-degree">{{ data.current.temp_c }} ℃</div>
         </div>
       </div>
-
-      <div style="clear: both;"></div> 
       
-      <div style="padding-left: 20px; padding-top: 10px; padding-bottom: 20px;">
-        <div style="width: 50%; float: left; padding-bottom: 20px;">
-          <b>Feels like</b> {{ data.current.feelslike_c }} ℃
-          <br/>
-          <b>PM 2.5</b> {{ data.current.air_quality.pm2_5.toFixed(2) }}
-          <br/>
-          <b>PM 10</b> {{ data.current.air_quality.pm10.toFixed(2) }}
-          <br/>
-          <b>Wind</b> {{ data.current.wind_kph }} km/h {{ data.current.wind_dir }}
-          <br/>
-          <b>Pressure</b> {{ data.current.pressure_mb }} hPa
-          <br/>
-          <b>Visibility</b> {{ data.current.vis_km }} km
-          <br/>
-          <b>Humidity</b> {{ data.current.humidity }}%
+      <div class="weather-content">
+        <div class="weather-details">
+          <div><b>Feels like</b> {{ data.current.feelslike_c }} ℃</div>
+          <div><b>PM 2.5</b> {{ data.current.air_quality.pm2_5.toFixed(2) }}</div>
+          <div><b>PM 10</b> {{ data.current.air_quality.pm10.toFixed(2) }}</div>
+          <div><b>Wind</b> {{ data.current.wind_kph }} km/h {{ data.current.wind_dir }}</div>
+          <div><b>Pressure</b> {{ data.current.pressure_mb }} hPa</div>
+          <div><b>Visibility</b> {{ data.current.vis_km }} km</div>
+          <div><b>Humidity</b> {{ data.current.humidity }}%</div>
         </div>
-        <div style="width: 50%; float: left; text-align: right; padding-top: 25px; padding-right: 35px;"><img [src]="data.current.condition.icon | safer: 'url'"></div>
+        <div class="weather-img"><img [src]="data.current.condition.icon | safer: 'url'"></div>
       </div>
 
     </ion-card>
 
   </div>
 
-  <div style="position: absolute; bottom: 0; text-align: right; width: 100%; padding: 5px;">
+  <div class="weatherapi">
     Powered by <a href="https://www.weatherapi.com/" title="Weather API">WeatherAPI.com</a>
   </div>
 

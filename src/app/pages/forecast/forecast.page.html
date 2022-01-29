@@ -45,7 +45,7 @@
       <ion-ripple-effect></ion-ripple-effect></ion-button>
   </form>
 
-  <div *ngIf="data" style="margin-top: 20px;">
+  <div *ngIf="data" class="data">
 
     <div class="centerix">
       <b>Last updated:</b> {{ data.current.last_updated }}
@@ -55,43 +55,31 @@
 
       <ion-card class="weather-card">
 
-        <div style="width: 100vw; padding-left: 2px; padding-top: 20px; float: left;">
-          <div style="width: 100%; float: left; padding-left: 5vw; padding-right: 5vw; font-weight: normal;">
-            {{ day.day.condition.text }}
+        <div class="weather-header">
+          <div class="weather-header-condition">
+            {{ data.current.condition.text }}
           </div>
-          <div style="padding-left: 5vw; padding-right: 5vw; width: 100vw; float: left;">
-            <div style="width: 50%; float: left; padding-top: 5px; font-size: 1.5rem;">{{ day.date | customDate }}</div>
-            <div style="width: 40%; float: left; font-size: 2rem; font-weight: bold; text-align: right;">{{ day.day.avgtemp_c }} ℃</div>
+          <div class="weather-header2">
+            <div class="weather-header2-date">{{ day.date | customDate }}</div>
+            <div class="weather-header2-degree">{{ day.day.avgtemp_c }} ℃</div>
           </div>
         </div>
-
-        <div style="clear: both;"></div> 
         
-        <div style="padding-left: 20px; padding-top: 10px; padding-bottom: 20px;">
-          <div style="width: 50%; float: left; padding-bottom: 20px;">
-              <span><b>{{ day.day.mintemp_c }} ℃ ... {{ day.day.maxtemp_c }} ℃</b></span>
-              <br/><br/>
-              <b>Wind</b> {{ day.day.maxwind_kph }} km/h
-              <br/>
-              <b>Sunrise</b> {{ day.astro.sunrise }}
-              <br/>
-              <b>Sunset</b> {{ day.astro.sunset }}
-              <br/>
-              <b>Visibility</b> {{ day.day.avgvis_km }} km
-              <br/>
-              <b>Humidity</b> {{ day.day.avghumidity }}%
-              <br/>
-              <b>Chance of snow</b> {{ day.day.daily_chance_of_snow }}%
-              <br/>
-              <b>Chance of rain</b> {{ day.day.daily_chance_of_rain }}%
-              <br/>
-              <b>Total precip</b> {{ day.day.totalprecip_mm }} mm
+        <div class="weather-content">
+          <div class="weather-details">
+              <div class="weather-range"><b>{{ day.day.mintemp_c }} ℃ ... {{ day.day.maxtemp_c }} ℃</b></div>
+              <div><b>Wind</b> {{ day.day.maxwind_kph }} km/h</div>
+              <div><b>Sunrise</b> {{ day.astro.sunrise }}</div>
+              <div><b>Sunset</b> {{ day.astro.sunset }}</div>
+              <div><b>Visibility</b> {{ day.day.avgvis_km }} km</div>
+              <div><b>Humidity</b> {{ day.day.avghumidity }}%</div>
+              <div><b>Chance of snow</b> {{ day.day.daily_chance_of_snow }}%</div>
+              <div><b>Chance of rain</b> {{ day.day.daily_chance_of_rain }}%</div>
+              <div><b>Total precipitation</b> {{ day.day.totalprecip_mm }} mm</div>
           </div>
-          <div style="width: 50%; float: left; text-align: right; padding-top: 60px; padding-right: 30px;"><img [src]="day.day.condition.icon | safer: 'url'"></div>
+          <div class="weather-img"><img [src]="data.current.condition.icon | safer: 'url'"></div>
         </div>
-
-        <div style="clear: both; width: 100vw;"></div> 
-
+  
         <ion-accordion-group>
           <ion-accordion value="colors">
             <ion-item slot="header">
@@ -101,11 +89,11 @@
             <ion-list slot="content">
               <div *ngFor="let hour of day.hour">
                 <ion-item>
-                <div style="width: 100vw; float: left; padding-left: 20px; padding-top: 10px; padding-bottom: 10px;">
-                  <div style="width: 80px; float: left;">
-                    {{ hour.time | date:'shortTime':'+0200' }} <img style="width: 50px;" [src]="hour.condition.icon | safer: 'url'">
+                <div class="hourly-content">
+                  <div class="hourly-time">
+                    {{ hour.time | date:'shortTime':'+0200' }} <img [src]="hour.condition.icon | safer: 'url'">
                   </div>
-                  <div style="width: 50%; float: left; padding-top: 30px; font-size: 1.5rem">
+                  <div class="hourly-degree">
                     {{ hour.temp_c }} ℃
                   </div>
                 </div>
@@ -121,7 +109,7 @@
 
   </div>
 
-  <div style="bottom: 0; text-align: right; width: 100%; padding: 5px;">
+  <div class="weatherapi2">
     Powered by <a href="https://www.weatherapi.com/" title="Weather API">WeatherAPI.com</a>
   </div>
 
